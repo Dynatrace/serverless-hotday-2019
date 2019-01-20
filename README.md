@@ -322,7 +322,7 @@ To get started, let's create a Node.js project to contain our Lambda function.
 
       ```js
       const AWS = require('aws-sdk');
-      const dynamo = new AWS.DynamoDB.DocumentClient();
+      const dynamo = new AWS.DynamoDB();
       ```
 
 6. While we are at it let's bring in the Dynatrace agent by running `npm install --save @dynatrace/oneagent@next`.
@@ -371,4 +371,47 @@ already have it enabled.
 ### Step-by-step Guide
 
 1. Log in to the provided Dynatrace environment
+
 2. Click `Deploy Dynatrace` and `Set up Serverless integration`
+
+   ![Lambda Deployment](/assets/lambda_dt_setup_1.png)
+
+3. On the following screen select Node.js and leave the defaults.
+
+   > Our function is stored in the file `index.js` and the code is exporter
+   in `handler`- that's why it is referenced as `index.handler`.
+   If the file would be called `lambda.js` and the function would be exported as
+   `hello`, the handler function to enter here, would be `lambda.hello`.
+
+   ![Lambda Deployment](/assets/lambda_dt_setup_2.png)
+
+4. Enter the values into the AWS console - as provided by the setup screen
+   ![Lambda Deployment](/assets/lambda_dt_setup_3.png)
+   This will instruct Lambda to first load the Dynatrace agent which
+   instruments and executes the function
+
+5. Click `Save`
+
+6. Let's use Postman to hit the Lambda function a few times.
+   Also do some POST requests.
+   For that, use this document as the DynamoDB client you install via module
+   expects a slightly different format.
+
+   ```js
+   "Item": {
+     "songId": {"S" : "A_Kind_of_Magic_1986"},
+     "AlbumTitle": {"S" :  "A Kind of Magic"},
+     "Artist": {"S" : "Queen"},
+     "SongTitle": {"S" : "A Kind of Magic"},
+     "Year": {"S": "1986"}
+   },
+   "ReturnConsumedCapacity": "TOTAL",
+   "TableName": "Music"
+   ```
+
+### Explore the Monitoring Data in Dynatrace
+
+On the deployment screen, click `Show deployment status`.
+![Lambda Dynatrace](/assets/lambda_dt_1.png)
+
+![Lambda Dynatrace](/assets/lambda_dt_2.png)
