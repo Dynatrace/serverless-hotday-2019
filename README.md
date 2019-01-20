@@ -294,6 +294,9 @@ Let's review, what the AWS dashboard gives us by now.
 ![Lambda Dynatrace](/assets/cloudwatch.png)
 We see that the Dynatrace CloudWatch integration is already collecting key metrics.
 
+Additionally, as we are using DynamoDB, we also get insights into it.
+![Lambda Dynatrace](/assets/cloudwatch_2.png)
+
 ## Lab 3: Developing a Lambda function locally
 
 So far, we used the web based editor but that's of course not how larger applications
