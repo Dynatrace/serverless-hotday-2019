@@ -290,6 +290,10 @@ To try that, we just have to send a GET request to `https://<your_endpoint>?Tabl
 As we can see, we now have a fully featured REST based backed to save and
 retrieve data from.
 
+Let's review, what the AWS dashboard gives us by now.
+![Lambda Dynatrace](/assets/cloudwatch.png)
+We see that the Dynatrace CloudWatch integration is already collecting key metrics.
+
 ## Lab 3: Developing a Lambda function locally
 
 So far, we used the web based editor but that's of course not how larger applications
@@ -414,4 +418,15 @@ already have it enabled.
 On the deployment screen, click `Show deployment status`.
 ![Lambda Dynatrace](/assets/lambda_dt_1.png)
 
+When we navigate to the PurePath view, we see that the DynamoDB call is identified
+as a call to public networks, which might be missleading.
+
 ![Lambda Dynatrace](/assets/lambda_dt_2.png)
+
+Nevertheless, this PurePath already contains valuable information about the request.
+
+![Lambda Dynatrace](/assets/lambda_dt_3.png)
+
+Together with the timing information, collected with every request,
+these are the metrics we are interested in.
+
