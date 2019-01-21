@@ -447,7 +447,7 @@ Nevertheless, this PurePath already contains valuable information about the requ
 9. On the Service detail screen, we can now edit and rename the service to DynamoDB
     (us-east).
 
-    ![Lambda Dynatrace](/assets/separate_service.png)
+    ![Lambda Dynatrace](/assets/edit_service.png)
 
 10. Now the Database requests show up properly in the UI
 
