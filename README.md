@@ -430,6 +430,25 @@ Nevertheless, this PurePath already contains valuable information about the requ
 
 ![Lambda Dynatrace](/assets/lambda_dt_3.png)
 
-Together with the timing information, collected with every request,
-these are the metrics we are interested in.
+### Excursus
 
+'Request to public networks' isn't ideal - let's change that.
+
+1. Go to `Transactions & services'
+2. Click on `Requests to public networks`
+3. Click on `View requests`
+4. On the bottom of the page, click on the `dynamodb.*.amazonaws.com` link
+5. Click again to precisize the filter
+6. Click on the three dots at the top right of the page
+7. Select 'Monitor as separate service'
+   ![Lambda Dynatrace](/assets/separate_service.png)
+8. Click on `Transactions and services` again - now the service is shown properly
+   with an icon
+9. On the Service detail screen, we can now edit and rename the service to DynamoDB
+    (us-east).
+
+    ![Lambda Dynatrace](/assets/separate_service.png)
+
+10. Now the Database requests show up properly in the UI
+
+    ![Lambda Dynatrace](/assets/service_flow_servicename.png)
