@@ -12,7 +12,6 @@ If you haven't done so already, please [create an AWS account](https://portal.aw
 We recommend that you use a dedicated account to not interfere with existing
 setups you may have. A new account, also gives you full access to all free tiers.
 
-
 ### Install GIT
 
 We will need GIT to clone some repositories later.
@@ -44,6 +43,22 @@ We will need the AWS CLI (command line interface) to interact with AWS.
 * [Linux](https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html)
 
 Try it by running `aws` on your console.
+
+#### Creating an AWS user and logging in
+
+1. Open the AWS Dashboard and select __Services -> IAM__
+2. Click **Users** and **Add user**
+3. Name the user **hotday-cli**
+4. Select **Programmatic access**
+5. Click **Next: Permissions**
+6. Select **Administrators**
+   > Note: In production scenarios, you may want to trim down the permissions to
+   > exactly the privileges a given user needs
+7. Click **Next** until the user is created
+8. Click **Download .csv** to download the users credentials - and store it safely
+9. In your systems terminal, enter `aws configure`
+10. Enter the credentials we just created
+11. As default region name, enter `us-west-1` and leave the defaults for the rest
 
 ### Install Node.js
 
@@ -86,7 +101,7 @@ If the connection was successful, the AWS screen should look similar to this:
 ## Lab 2: Creating a Lambda Function using the AWS Console
 
 The AWS Lambda console provides an easy way to create and manage Lambda functions.
-We will later explore other ways to create and deployLambda functions.
+We will later explore other ways to create and deploy functions.
 
 In this lab, we will create a function that acts as REST API for a DynamoDB database.
 
@@ -453,4 +468,13 @@ Nevertheless, this PurePath already contains valuable information about the requ
 
     ![Lambda Dynatrace](/assets/service_flow_servicename.png)
 
-> Please [consult the Dynatrace documentation](https://www.dynatrace.com/support/help/monitor/transactions-and-services/service-monitoring/how-do-i-monitor-3rd-party-service-providers/) for more information.
+> Please [consult the Dynatrace documentation](https://www.dynatrace.com/support/help/monitor/transactions-and-services/service-monitoring/how-do-i-monitor-3rd-party-service-providers/)
+> for more information.
+
+## Lab 5: Using the Serverless Framework
+
+Manually uploading a function is not viable for real life scenarios.
+While there are ways to automate deployment using only AWS tooling, today
+the [Serverless Framework](https://serverless.com/).
+This framwork supports not only AWS but also Azure, Google Cloud and some others.
+
