@@ -452,3 +452,5 @@ Nevertheless, this PurePath already contains valuable information about the requ
 10. Now the Database requests show up properly in the UI
 
     ![Lambda Dynatrace](/assets/service_flow_servicename.png)
+
+> Please [consult the Dynatrace documentation](https://www.dynatrace.com/support/help/monitor/transactions-and-services/service-monitoring/how-do-i-monitor-3rd-party-service-providers/) for more information.
