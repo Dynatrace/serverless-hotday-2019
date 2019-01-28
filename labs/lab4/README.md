@@ -36,7 +36,7 @@ While Lambda monitoring is still in Early Access, the provided Dynatrace Environ
 
    ```js
    "Item": {
-     "songId": "A_Kind_of_Magic_1986",
+     "titleId": "A_Kind_of_Magic_1986",
      "AlbumTitle": "A Kind of Magic",
      "Artist": "Queen",
      "SongTitle": "A Kind of Magic",

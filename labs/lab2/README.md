@@ -121,7 +121,7 @@ With this data, we can now start postman to test this out.
     ```json
     {
       "Item": {
-        "songId": "Bohemian_Rhapsody_1975",
+        "titleId": "Bohemian_Rhapsody_1975",
         "AlbumTitle": "A Night at the Opera",
         "Artist": "Queen",
         "SongTitle": "Bohemian Rhapsody",
@@ -152,7 +152,7 @@ With this data, we can now start postman to test this out.
     ```json
     {
       "Item": {
-        "songId": "A_Kind_of_Magic_1986",
+        "titleId": "A_Kind_of_Magic_1986",
         "AlbumTitle": "A Kind of Magic",
         "Artist": "Queen",
         "SongTitle": "A Kind of Magic",
@@ -166,7 +166,7 @@ With this data, we can now start postman to test this out.
     ```json
     {
       "Item": {
-        "songId": "Who_wants_to_live_forever_1986",
+        "titleId": "Who_wants_to_live_forever_1986",
         "AlbumTitle": "A Kind of Magic",
         "Artist": "Queen",
         "SongTitle": "Who Wants to Live Forever",
