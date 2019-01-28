@@ -8,9 +8,11 @@ AWS.config.update({ region: 'us-east-2' });
 
 const sns = new AWS.SNS();
 
-let isColdStart = true;
+// let isColdStart = true;
 
 module.exports.handler = async (event, context, callback) => {
+
+  /*
   if (isColdStart) {
     console.log('This is a coldstart');
     dsdk.addCustomRequestAttribute('coldstart', 'yes');
@@ -18,6 +20,7 @@ module.exports.handler = async (event, context, callback) => {
   } else {
     dsdk.addCustomRequestAttribute('coldstart', 'no');
   }
+  */
 
   const data = JSON.parse(event.body);
   if (typeof data.note !== 'string') {

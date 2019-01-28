@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/no-unresolved
 const AWS = require('aws-sdk');
 const uuidv4 = require('uuid/v4');
-const DSDK = require('@dynatrace/oneagent-sdk');
 
-const dsdk = DSDK.createInstance();
+// const DSDK = require('@dynatrace/oneagent-sdk');
+// const dsdk = DSDK.createInstance();
 
 const dynamo = new AWS.DynamoDB();
 
@@ -12,7 +12,7 @@ AWS.config.update({ region: 'us-east-1' });
 
 const comprehend = new AWS.Comprehend();
 
-let isColdStart = true;
+// let isColdStart = true;
 
 async function processMessage(params) {
   return comprehend.detectSentiment(params).promise();
@@ -20,6 +20,7 @@ async function processMessage(params) {
 
 module.exports.handler = async (event, context, callback) => {
   try {
+    /*
     if (isColdStart) {
       console.log('This is a coldstart');
       dsdk.addCustomRequestAttribute('coldstart', 'yes');
@@ -27,6 +28,7 @@ module.exports.handler = async (event, context, callback) => {
     } else {
       dsdk.addCustomRequestAttribute('coldstart', 'no');
     }
+    */
 
     const message = JSON.parse(event.Records[0].Sns.Message);
     const { note } = message.payload;
@@ -38,7 +40,7 @@ module.exports.handler = async (event, context, callback) => {
 
     const data = await processMessage(params);
 
-    dsdk.addCustomRequestAttribute('sentiment', data.Sentiment);
+    // dsdk.addCustomRequestAttribute('sentiment', data.Sentiment);
     if (data.Sentiment === 'POSITIVE') {
       const noteData = {
         Item: {

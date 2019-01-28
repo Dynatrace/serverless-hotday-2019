@@ -16,4 +16,6 @@ This repository contains labs for the Serverless Hands-On Training at Perform 20
 
 [**Lab 5:** Using the Serverless Framework](labs/lab5)
 
+[**Lab 6:** Using the Dynatrace SDK to connect invocations](labs/lab6)
 
+[**Lab 7:** Monitor and chart coldstarts](labs/lab7)

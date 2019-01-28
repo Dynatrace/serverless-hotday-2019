@@ -18,14 +18,16 @@ additional data.
 3. Rename env.yml-sample to env.yml and enter the provided credentials
    To not run into rate limits, lets get a [dedicated key for the NASA API](https://api.nasa.gov/index.html#apply-for-an-api-key).
 
-4. Run `npx serverless deploy` - this downloads the serverless command and
+4. Take your time to review the contents of `serverless.yml`
+
+5. Run `npx serverless deploy` - this downloads the serverless command and
    executes it
 
-5. When this process has finished, you will be presented with an URL we can now simply access in the browser
+6. When this process has finished, you will be presented with an URL we can now simply access in the browser
 
-6. In the console run `npx serverless logs -f get-location -t`
+7. In the console run `npx serverless logs -f get-location -t`
 
-7. Load the page a few times
+8. Load the page a few times
 
    ![ISS Lambda](/assets/isslocation.png)
 
