@@ -57,5 +57,6 @@ to connect the lambda functions as we would lose context when we go througfh SNS
    messages and see if it was positive enough
 
 8. Review the results in Dynatrace
+   ![SNS Stitched](/assets/sns-stitched.png)
 
 :arrow_up: [Back to TOC](/README.md)
