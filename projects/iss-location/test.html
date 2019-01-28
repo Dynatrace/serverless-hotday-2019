@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <title>HTML from API Gateway/Lambda</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <div class='container'>
+    <div class='row'>
+      <div class="col-sm">
+
+        <div class="card">
+          <img class="card-img-top" src="${map}" alt="Map of ${rGeoCode}">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">The ISS is currently over <strong>${rGeoCode}</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card">
+          <img class="card-img-top" src="${imagery}" alt="Detail of ${rGeoCode}">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">On board are <strong>${crewMembers.join(', ')}</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

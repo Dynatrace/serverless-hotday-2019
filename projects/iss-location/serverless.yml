@@ -1,0 +1,28 @@
+service: lambda-iss-location
+
+plugins:
+#  - '@dynatrace/serverless-oneagent'
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-west-1
+  apiKeys:
+    - my-api-key
+
+functions:
+  get-location:
+    handler: index.handler
+    environment:
+      GOOGLE_API_KEY: ${self:custom.environment.googleAPI}
+      NASA_API_KEY: ${self:custom.environment.nasaAPI}
+    events:
+      - http:
+         path: iss/location
+         method: get
+
+custom:
+  environment: ${file(env.yml):default}
+#  serverless-oneagent:
+#    npmModuleVersion: next
+#    options: ${self:custom.environment.dynatraceCredentials}

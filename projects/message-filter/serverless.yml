@@ -1,0 +1,54 @@
+service: message-filter
+plugins:
+  - '@dynatrace/serverless-oneagent'
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-east-2
+  iamRoleStatements:
+    - Effect: "Allow"
+      Resource: "*"
+      Action:
+        - sns:*
+        - comprehend:*
+    - Effect: Allow
+      Resource:
+        - "Fn::GetAtt": [ NotesTable, Arn ]
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      # Restrict our IAM role permissions to
+      # the specific table for the stage
+
+functions:
+  queueNote:
+    handler: queueNote.handler
+    events:
+      - http:
+          path: notes
+          method: post
+          cors: true
+
+  storeNote:
+    handler: storeNote.handler
+    events:
+      - sns: analyzeNote
+
+
+custom:
+  tableName: notesTable
+  environment: ${file(env.yml):default}
+  serverless-oneagent:
+    npmModuleVersion: next
+    options: "${self:custom.environment.dynatraceCredentials}"
+    verbose: false
+
+resources:
+  # DynamoDB
+  - ${file(resources/dynamodb-table.yml)}

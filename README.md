@@ -2,84 +2,11 @@
 
 This repository contains labs for the Serverless Hands-On Training at Perform 2019.
 
-## Preparing our environments
+## TOC
 
-In this section, we will set up everything that we need throughout the following
-labs.
+1. [Preparing our Environments](labs/preparation)
 
-### Create an AWS Account
-If you haven't done so already, please [create an AWS account](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html).
-We recommend that you use a dedicated account to not interfere with existing
-setups you may have. A new account, also gives you full access to all free tiers.
-
-### Install GIT
-
-We will need GIT to clone some repositories later.
-If you haven't git on your system already, please install it now.
-
-* [Windows](https://git-scm.com/download/win)
-* [Mac](https://git-scm.com/download/mac)
-* Linux:
-
-  ```bash
-  # Debian
-  sudo apt-get update
-  sudo apt-get upgrade
-  sudo apt-get install git
-
-  # RedHat
-  sudo yum upgrade
-  sudo yum install git
-  ```
-
-Try it by running `git --version` on your console.
-
-### Install AWS CLI and its dependencies
-
-We will need the AWS CLI (command line interface) to interact with AWS.
-
-* [Windows (Use MSI Installer)](https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html)
-* [Mac (Use the Bundled Installer)](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html)
-* [Linux](https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html)
-
-Try it by running `aws` on your console.
-
-#### Creating an AWS user and logging in
-
-1. Open the AWS Dashboard and select __Services -> IAM__
-2. Click **Users** and **Add user**
-3. Name the user **hotday-cli**
-4. Select **Programmatic access**
-5. Click **Next: Permissions**
-6. Select **Administrators**
-   > Note: In production scenarios, you may want to trim down the permissions to
-   > exactly the privileges a given user needs
-7. Click **Next** until the user is created
-8. Click **Download .csv** to download the users credentials - and store it safely
-9. In your systems terminal, enter `aws configure`
-10. Enter the credentials we just created
-11. As default region name, enter `us-west-1` and leave the defaults for the rest
-
-### Install Node.js
-
-Our Lambda samples will be based on Node.js.
-This is also the platform that is currently supported by our EAP version.
-
-* [Windows](https://nodejs.org/dist/v10.15.0/node-v10.15.0-x86.msi)
-* [Mac](https://nodejs.org/dist/v10.15.0/node-v10.15.0.pkg)
-* [Linux](https://github.com/nodesource/distributions/blob/master/README.md)
-
-Try it out by running `node -v` and `npm -v`.
-
-### Install Postman
-
-To interact with REST APIs, let's [install Postman](https://www.getpostman.com/downloads/).
-No need to sign-in - just go straight to the app.
-
-### Install Visual Studio Code
-
-We will need to edit some code and it's recommended to
-[install Visual Studio Code](https://code.visualstudio.com/download) for that.
+2.
 
 ## Lab 1: Setup Dynatrace AWS Monitoring Integration
 
@@ -143,9 +70,8 @@ The function we created provides a REST API for DynamoDB.
 
 ```js
 console.log('Loading function');
-const doc = require('dynamodb-doc');
-const dynamo = new doc.DynamoDB();
-
+const AWS = require('aws-sdk');
+const dynamo = new AWS.DynamoDB();
 exports.handler = (event, context, callback) => {
     //console.log('Received event:', JSON.stringify(event, null, 2));
 
@@ -328,11 +254,10 @@ To get started, let's create a Node.js project to contain our Lambda function.
 5. The inline version automatically contains the libraries needed to access
    DynamoDB (`dynamo`). To add this functionality to our function, we have to install
    the respective modules.
-   1. Run `npm install --save aws-sdk`
-   2. At the top of `index.js` add
+   1. At the top of `index.js` add
 
       ```js
-      const AWS = require('aws-sdk');
+      const AWS = require('aws-sdk'); // no need to install it as Lambda already has it
       const dynamo = new AWS.DynamoDB();
       ```
 
@@ -483,14 +408,11 @@ For this Lab we will check out a sample project from GitHub.
 5. Run `npx serverless deploy` - this downloads the serverless command and
    executes it
 
-6. When this process has finished, you will be presented with an URL and an API
-   key that we can now use in postman
+6. When this process has finished, you will be presented with an URL we can now simply access in the browser
 
-7. In postman set the API key as `x-api-key`
+7. In the console run `npx serverless logs -f get-location -t`
 
-8. Create a `GET` request for the service URL and execute it
-
-9. Click `Preview` on the retunred body
+8. Load the page a few times
 
    ![ISS Lambda](/assets/isslocation.png)
 
@@ -508,12 +430,12 @@ that makes the installation with Serverless very easy.
 
 3. Uncomment the already provided `serverless-oneagent` section in `serverless.yml`
 
-4. Copy the Dynatrace credentials (from the Dynatrace deployment page)
+4. Copy the Dynatrace credentials (from the Dynatrace deployment page) and paste
+   it into env.yml under `dynatraceCredentials`
 
-5. Run `npx serverless deploy --dt-oneagent-options='{"dynatraceTagPropertyPath":
-   "headers.x-dynatrace","server":"...","tenant":"...","tenanttoken":"..."}' --verbose`
+5. Run `npx serverless deploy`
 
-6. Use Postman to run the Lambda a few times
+6. Reload the page a few times
 
 7. Open Dynatrace and navigate to the Service flow from the service screen
    ![ISS Lambda](/assets/iss-combined-services.png)
@@ -556,21 +478,21 @@ const rGeoCode = await reverseGeocode(issPosition.latitude, issPosition.longitud
 
 But we can parallelize the location and the crew call.
 
-So we replace those first two calls with:
-
 ```js
 const [issPosition, crewMembers] = await Promise.all([getIssLocation(), getIssCrew()]);
 ```
 
-Next we can also parallelize the imagery and geocode calls.
+Similarly, we can also parallelize the imagery and geocode calls.
 
 ```js
-const [imagery, rGeoCode] = await Promise.all(getIssImageryUrl([
+const [imagery, rGeoCode] = await Promise.all([getIssImageryUrl(
   issPosition.latitude,
   issPosition.longitude),
   reverseGeocode(issPosition.latitude, issPosition.longitude)
 ]);
 ```
+
+This is all part of the sample project and just needs to be commented out.
 
 Then let's redeploy. For that hit the cursor up key to get back to the deployment
 command that contains Dynatrace.

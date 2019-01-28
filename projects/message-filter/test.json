@@ -1,0 +1,27 @@
+{
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:us-east-2:167598770382:analyzeNote:8dde2429-bad1-4b95-82e1-c6236b9fec93",
+      "Sns": {
+        "Type": "Notification",
+        "MessageId": "a471b26b-06d8-59da-ae72-e6afc8a4f6aa",
+        "TopicArn": "arn:aws:sns:us-east-2:167598770382:analyzeNote",
+        "Subject": null,
+        "Message": "{\"payload\":{\"note\":\"Today is a great day!\"}}",
+        "Timestamp": "2019-01-25T08:43:40.748Z",
+        "SignatureVersion": "1",
+        "Signature": "dazE3xCiUQXM7usxm2G1ZGl2EVRMJJY76DAI+07sXRpdcsnYiHW5IIFTtVLNFY7ENngEc0FFJMopfdxMdriRuQXD0FnS7jD2nwJAtfYc+5vTeAOECznb53LShB2G09vL6avNwGEGhhOkLhfhJY6IFf8xd2k2apivjZYL+qUp5/3tLmouT/NtOyb0v4+CwX3sYyQ8wdMxJ7lyawlVYrWnLBcGpQvxUYA0IZeTHmC7aRmnDriXspeGF+Y5hG26gnp0equxZL1duawJ4eydg7JmUaOz113DFG8pLeoRNS55/4uHCFj8363ZasP7Ehx+uf8HkumulilyBCXmRjqm9Pnf/g==",
+        "SigningCertUrl": "https://sns.us-east-2.amazonaws.com/SimpleNotificationService-ac565b8b1a6c5d002d285f9598aa1d9b.pem",
+        "UnsubscribeUrl": "https://sns.us-east-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-2:167598770382:analyzeNote:8dde2429-bad1-4b95-82e1-c6236b9fec93",
+        "MessageAttributes": {
+          "dtTag": {
+            "Type": "String",
+            "Value": "FW2;-1743916453;6;-2113862265;6;0;-1248668762"
+          }
+        }
+      }
+    }
+  ]
+}
