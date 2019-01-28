@@ -503,4 +503,3 @@ Let's hit the endpoint a few times.
 
 We see that we could now save a bit of execution time by paralellizing requests.
 
-[:arrow_up: Back to TOC](/)
