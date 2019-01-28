@@ -4,7 +4,7 @@ This repository contains labs for the Serverless Hands-On Training at Perform 20
 
 ## TOC
 
-1. [Preparing our Environments](labs/preparation)
+1. [Preparing our Environments](/labs/preparation)
 
 2.
 
