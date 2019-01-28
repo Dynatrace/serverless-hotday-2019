@@ -43,6 +43,9 @@ Try it by running `aws` on your console.
 
 ### Creating an AWS user and logging in
 
+To authenticate the AWS CLI, we will create a dedicated user that only
+has programmatic access.
+
 1. Open the AWS Dashboard and select __Services -> IAM__
 2. Click **Users** and **Add user**
 3. Name the user **hotday-cli**

@@ -1,5 +1,5 @@
-const AWS = require('aws-sdk');
-const dynamo = new AWS.DynamoDB();
+const doc = require('dynamodb-doc');
+const dynamo = new doc.DynamoDB();
 
 exports.handler = (event, context, callback) => {
   //console.log('Received event:', JSON.stringify(event, null, 2));
