@@ -1,4 +1,4 @@
-3# HOT Day 2019: Serverless
+# HOT Day 2019: Serverless
 
 This repository contains labs for the Serverless Hands-On Training at Perform 2019.
 
