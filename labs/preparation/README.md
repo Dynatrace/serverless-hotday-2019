@@ -78,4 +78,4 @@ No need to sign-in - just go straight to the app.
 We will need to edit some code and it's recommended to
 [install Visual Studio Code](https://code.visualstudio.com/download) for that.
 
-[:arrow_up: Back to TOC](/)
+:arrow_up: [Back to TOC](/README.md)
