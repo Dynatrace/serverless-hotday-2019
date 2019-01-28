@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dynatrace/oneagent": "^1.159.223-1.0.0",
     "aws-sdk": "^2.391.0"
   }
 }
