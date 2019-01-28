@@ -67,10 +67,25 @@ To make the data available in Dynatrace, we have to add a bit of Configuration t
 4. Do the same for the request attribute `coldstart` and call it `Lambda Coldstart`
 
 5. Now hit the API a few times and soon the data will show up as separate tab
-   on service requests (Service -> Show requests)
-   ![Request Attributes](/assets/request-attributes.png)
+   on service requests (analyzeNote: Service -> Show requests).
 
-6. Click on **Create Chart** to create a chart for this service and its attributes
+   ![Request Attributes](/assets/requests_with_attributes.png)
 
+6. Click on **Create chart** to create a chart for this service and its attributes
+
+7. Change the response time metric as shown on the screenhot
+
+   ![Request Attributes](/assets/coldstart_chart.png)
+
+   By hovering over the chart we can see the response time impact due to coldstarts.
+
+8. Click on **Save to service** to create a shortcut for your services screen.
+
+9. We can also create a chart that shows response time versus sentiment
+
+   ![Request Attributes](/assets/sentiment_chart.png)
+
+   And when we hover over the metrics, we see that positive sentiments take longer.
+   The difference is the time needed to talk to DynamoDB.
 
 :arrow_up: [Back to TOC](/README.md)
