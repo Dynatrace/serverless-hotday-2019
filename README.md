@@ -1,3 +1,7 @@
+⚠️ This repository has been archived and is no longer maintained.
+The code is available for historical reference or archival purposes.
+
+
 # HOT Day 2019: Serverless
 
 This repository contains labs for the Serverless Hands-On Training at Perform 2019.
