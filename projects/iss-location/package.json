@@ -12,7 +12,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "debug": "^4.1.1",
-    "semver": "^5.6.0"
+    "semver": "^5.7.2"
   },
   "devDependencies": {
     "@dynatrace/serverless-oneagent": "^1.0.7"
